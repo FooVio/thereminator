@@ -1,4 +1,3 @@
-var osc;
 var note;
 var volume = 0;
 var MAXVOLUME = 0.5;
