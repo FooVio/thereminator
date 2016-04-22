@@ -25,5 +25,5 @@ function draw() {
 function mouseMoved() {
   freq = map(mouseX,0,width,200,15000);
   volume = map(mouseY,0,height,0,MAXVOLUME);
-  console.log(freq, volume);
+  // console.log(freq, volume);
 }

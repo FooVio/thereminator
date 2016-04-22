@@ -13,5 +13,8 @@
     "bootstrap": "^3.3.6",
     "tracking": "^1.1.2",
     "p5": "^0.4.23"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
   }
 }
