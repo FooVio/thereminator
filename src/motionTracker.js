@@ -20,6 +20,6 @@ window.onload = function() {
   });
 
   window.pubSub = {
-    on: tracker.on
+    subscribe: tracker.on.bind(tracker, 'track')
   };
 };
