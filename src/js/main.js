@@ -29,6 +29,8 @@ function setup() {
     switch (message.type) {
       case 'amp':
         amp(instrument, message.value);
+      case 'drum':
+        drumamp(instrument, message.value);
       default:
         amp(instrument, message.value);
     }
@@ -42,4 +44,8 @@ function draw() {
 
 function amp(name, volume) {
   instruments[name].amp = volume;
+}
+
+function drumamp(drumname, volume) {
+  instruments['drums'][drumname].amp = volume;
 }
