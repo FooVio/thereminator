@@ -36,10 +36,13 @@ function setup() {
     switch (message.type) {
       case 'amp':
         amp(instrument, message.value);
+        break;
       case 'drum':
         drumamp(instrument, message.value);
+        break;
       default:
         amp(instrument, message.value);
+        break;
     }
   });
 }

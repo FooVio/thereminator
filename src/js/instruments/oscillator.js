@@ -19,12 +19,14 @@ function setValues(e) {
     volume = 0;
   }
 
-  socket.emit('client-message', {
-    instrument: 'oscillator',
+  data = {
+    instrument: 'synth',
     type: 'amp',
-    volume: volume,
+    value: volume,
     freq: PENTATONIC_SCALE[freqIndex]
-  });
+  };
+  console.log(data);
+  socket.emit('client-message', data);
 }
 
 window.pubSub.subscribe(setValues);
