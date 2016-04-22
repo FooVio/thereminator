@@ -14,9 +14,9 @@
 
     <script>
       var socket = io();
-      setInterval(function(){
-        socket.emit('client-message', 'tick');
-      },500);
+      socket.on('server-message', function(msg){
+        console.log(msg);
+      });
     </script>
   </head>
   <body>
