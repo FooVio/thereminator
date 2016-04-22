@@ -18,7 +18,9 @@ function initSound() {
 }
 
 function mute() {
-  amp('drums',0);
+  amp('drums',1);
+  drumamp('kick',0);
+  drumamp('snare',0);
   amp('bass',0);
   amp('synth',0);
 }
@@ -37,7 +39,7 @@ function setup() {
       case 'amp':
         amp(instrument, message.value);
         break;
-      case 'drum':
+      case 'drums':
         drumamp(instrument, message.value);
         break;
       default:
