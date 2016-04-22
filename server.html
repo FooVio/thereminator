@@ -9,15 +9,9 @@
 
     <script src="node_modules/p5/lib/p5.min.js"></script>
     <script src="node_modules/p5/lib/addons/p5.sound.js"></script>
-    <script src="src/js/main.js"></script>
+    <script src="node_modules/gibber.lib/build/gibber.lib.min.js"></script>
     <script src="socket.io/socket.io.js"></script>
-
-    <script>
-      var socket = io();
-      socket.on('server-message', function(msg){
-        console.log(msg);
-      });
-    </script>
+    <script src="src/js/main.js"></script>
   </head>
   <body>
     <h1>sock my socket</h1>

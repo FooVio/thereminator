@@ -13,10 +13,10 @@
     <script src="socket.io/socket.io.js"></script>
 
     <script>
-      var socket = io();
-      setInterval(function(){
-        socket.emit('client-message', 'tick');
-      },500);
+      socket = io();
+      // setInterval(function(){
+      //   socket.emit('client-message', {});
+      // },500);
     </script>
   </head>
   <body>
