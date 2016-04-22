@@ -2,8 +2,7 @@ var express = require('express')
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var path = require('path')
-console.log(path.join(__dirname, '../..'));
+var path = require('path');
 
 app.use(express.static(path.join(__dirname, '../../..')));
 
