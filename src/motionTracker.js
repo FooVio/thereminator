@@ -14,8 +14,8 @@ window.onload = function() {
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
       context.font = '11px Helvetica';
       context.fillStyle = "#fff";
-      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+      context.fillText(('x: ' + rect.x + 'px').split("").reverse().join(""), rect.x + rect.width + 5, rect.y + 11);
+      context.fillText(('y: ' + rect.y + 'px').split("").reverse().join(""), rect.x + rect.width + 5, rect.y + 22);
     });
   });
 
