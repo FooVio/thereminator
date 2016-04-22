@@ -32,11 +32,13 @@ function setInstruments() {
 }
 
 function setValues(e) {
-  if (e.data[0]) {
+  if (e.data.length > 0) {
     freqIndex = Math.round(map(e.data[0].x,0,width, 0, PENTATONIC_SCALE.length));
     note = PENTATONIC_SCALE[freqIndex];
 
     volume = map(e.data[0].y,0,height,0,MAXVOLUME);
+  } else {
+    volume = 0;
   }
 }
 
@@ -55,4 +57,5 @@ function setup() {
 
 function draw() {
   inst.note(note);
+  inst.amp(volume);
 }
