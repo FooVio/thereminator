@@ -7,6 +7,8 @@ var PENTATONIC_SCALE = [183.54, 231.246, 275.0, 367.08, 462.494, 617.354, 734.16
 
 var socket = io();
 
+var freqIndex = 0;
+
 function setValues(e) {
   if (e.data.length !== 0) {
     freqIndex = Math.round(map(e.data[0].x,0,width, PENTATONIC_SCALE.length, 0));

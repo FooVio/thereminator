@@ -9,7 +9,7 @@ var currentInstument = null;
 
 var socket = io();
 
-function setInstruments() {
+window.setInstruments = function() {
   var ul = document.querySelector('ul.instruments');
 
   instruments.forEach(function(instrument) {
@@ -43,12 +43,10 @@ function sendEvent(e) {
 
   socket.emit('client-message', {
     instrument: 'mono',
-    type: instrument,
+    type: currentInstument,
     volume: volume,
     freq: PENTATONIC_SCALE[freqIndex]
   });
 }
 
 window.pubSub.subscribe(sendEvent);
-
-setInstruments();

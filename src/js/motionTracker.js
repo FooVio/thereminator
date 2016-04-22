@@ -7,4 +7,8 @@ window.onload = function() {
   tracking.track('#video', tracker, { camera: true });
 
   pubSub.init(tracker.on.bind(tracker, 'track'));
+
+  if (window.setInstruments){
+    window.setInstruments();
+  }
 };
