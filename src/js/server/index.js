@@ -6,6 +6,10 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, '../../..')));
 
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname, '../../..', 'index.html'));
+});
+
 io.on('connection', function(socket){
   console.log('a handsome user connected');
   socket.on('client-message', function(msg){
