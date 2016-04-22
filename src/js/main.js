@@ -17,11 +17,18 @@ function initSound() {
     .note.seq( Rndi(0,12), [1/4,1/8,1/2,1,2].rnd( 1/8,4 ) )
 }
 
+function mute() {
+  amp('drums',0);
+  amp('bass',0);
+  amp('synth',0);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   backgroundColor = color(255,0,255);
 
   initSound();
+  mute();
 
   var socket = io();
   socket.on('server-message', function(message){
