@@ -4,7 +4,7 @@ var volume = 0;
 var MAXVOLUME = 0.5;
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(windowWidth, windowHeight);
   backgroundColor = color(255,0,255);
   textAlign(CENTER);
 
@@ -16,6 +16,7 @@ function setup() {
 }
 
 function draw() {
+  backgroundColor = color(mouseY,0,mouseX);
   background(backgroundColor);
   osc.freq(freq);
   osc.amp(volume);
