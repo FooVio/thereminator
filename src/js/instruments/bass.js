@@ -1,5 +1,4 @@
 var osc;
-var freq = 500;
 var volume = 0;
 var MAXVOLUME = 0.5;
 

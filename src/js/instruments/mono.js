@@ -41,12 +41,15 @@ function sendEvent(e) {
     volume = 0;
   }
 
-  socket.emit('client-message', {
-    instrument: 'mono',
-    type: currentInstument,
-    volume: volume,
+  data = {
+    instrument: 'bass',
+    type: 'amp',
+    value: volume,
     freq: PENTATONIC_SCALE[freqIndex]
-  });
+  };
+  console.log(data);
+
+  socket.emit('client-message', data);
 }
 
 window.pubSub.subscribe(sendEvent);
