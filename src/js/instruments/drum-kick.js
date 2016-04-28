@@ -20,8 +20,8 @@ function setValues(e) {
   }
 
   data = {
-    instrument: 'synth',
-    type: 'amp',
+    instrument: 'kick',
+    type: 'drums',
     value: volume,
     freq: PENTATONIC_SCALE[freqIndex]
   };

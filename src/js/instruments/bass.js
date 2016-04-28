@@ -1,5 +1,4 @@
 var osc;
-var freq = 500;
 var volume = 0;
 var MAXVOLUME = 0.5;
 
@@ -20,7 +19,7 @@ function setValues(e) {
   }
 
   data = {
-    instrument: 'synth',
+    instrument: 'bass',
     type: 'amp',
     value: volume,
     freq: PENTATONIC_SCALE[freqIndex]
