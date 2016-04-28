@@ -1,7 +1,7 @@
 var osc;
 var freq = 500;
 var volume = 0;
-var MAXVOLUME = 0.5;
+var MAXVOLUME = 1;
 
 var PENTATONIC_SCALE = [183.54, 231.246, 275.0, 367.08, 462.494, 617.354, 734.162];
 
