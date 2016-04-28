@@ -34,6 +34,7 @@ function setup() {
 
   var socket = io();
   socket.on('server-message', function(message){
+    console.log(message);
     var instrument = message.instrument;
     switch (message.type) {
       case 'amp':
