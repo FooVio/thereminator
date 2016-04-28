@@ -11,4 +11,8 @@ window.onload = function() {
   if (window.setInstruments){
     window.setInstruments();
   }
+
+  if (window.setParams){
+    window.setParams();
+  }
 };
