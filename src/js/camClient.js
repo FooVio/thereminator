@@ -89,5 +89,5 @@
     }
   }
 
-  window.pubSub.subscribe(sendEvents);
+  module.exports = sendEvents;
 }());

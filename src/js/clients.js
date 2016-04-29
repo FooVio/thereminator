@@ -1,5 +1,5 @@
 (function(){
-  var clients = {
+  module.exports = {
     drum: {
       magenta: {
         instrument: 'drums/kick',
@@ -23,9 +23,5 @@
         }
       }
     }
-  };
-
-  window.setInstrument = function(instrument) {
-    window.currentInstrument = clients[instrument];
   };
 }());
