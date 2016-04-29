@@ -5,7 +5,8 @@ var instrumentPath = 'src/js/instruments';
 module.exports = {
   entry: {
     bass: path.join(__dirname, instrumentPath, 'bass'),
-    drum: path.join(__dirname, instrumentPath, 'drum')
+    drum: path.join(__dirname, instrumentPath, 'drum'),
+    synth: path.join(__dirname, instrumentPath, 'synth')
   },
   output: {
     path: path.join(__dirname, 'dist'),
