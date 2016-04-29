@@ -29,10 +29,14 @@
     var delta = currentTime - lastTime;
 
     if (delta > MAXDELTA) {
-      lastTime = currentTime;
-      console.log('event sent:', 'client-message', events);
       var filteredEvents = removedAlreadyMutedInstruments(events);
-      socket.emit('client-message', filteredEvents);
+
+      if(filteredEvents.length !== 0) {
+        lastTime = currentTime;
+
+        console.log('event sent:', 'client-message', filteredEvents);
+        socket.emit('client-message', filteredEvents);
+      }
     }
   }
 
@@ -61,15 +65,18 @@
 
   function removedAlreadyMutedInstruments(events) {
     var newMutedInstruments = [];
-    return events.filter(function(event) {
+    var filteredEvents = events.filter(function(event) {
       if ( event.parameter === 'amp' && event.value === 0) {
         newMutedInstruments.push(event.instrument);
-
         return (mutedInstruments.indexOf(event.instrument) < 0) ? true : false;
       } else {
         return true;
       }
     });
+
+    mutedInstruments = newMutedInstruments;
+
+    return filteredEvents;
   }
 
   function getEventsForMissingCards(availableCards) {
@@ -84,7 +91,7 @@
 
     return missingColors.map(function(color) {
       return {
-        instrument: window.currentInstrument[color],
+        instrument: window.currentInstrument[color].instrument,
         parameter: 'amp',
         value: MIN_VOLUME
       };
@@ -97,11 +104,8 @@
       return memo.concat(createEventsFromCard(card));
     }, []);
 
-    var totalEvents = getEventsForMissingCards(availableCards).concat(eventsFromCam);
-
-    if(totalEvents.length !== 0) {
-      signal(totalEvents);
-    }
+    var missingEvents = getEventsForMissingCards(availableCards);
+    signal(missingEvents.concat(eventsFromCam));
   }
 
   module.exports = sendEvents;
