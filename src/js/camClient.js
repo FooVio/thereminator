@@ -79,7 +79,7 @@
     });
 
     var missingColors = supportedColors.filter(function(color) {
-      return availableColors.indexOf(i) < 0;
+      return availableColors.indexOf(color) < 0;
     });
 
     return missingColors.map(function(color) {
@@ -92,11 +92,12 @@
   }
 
   function sendEvents(e) {
-    var eventsFromCam = e.data.reduce(function(memo, card) {
+    var availableCards = e.data;
+    var eventsFromCam = availableCards.reduce(function(memo, card) {
       return memo.concat(createEventsFromCard(card));
     }, []);
 
-    var totalEvents = getEventsForMissingCards().concat(eventsFromCam);
+    var totalEvents = getEventsForMissingCards(availableCards).concat(eventsFromCam);
 
     if(totalEvents.length !== 0) {
       signal(totalEvents);
