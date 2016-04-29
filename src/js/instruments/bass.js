@@ -1,8 +1,8 @@
 (function() {
-  var sendEvents = require('../camClient.js');
-  var clients = require('../clients.js');
-
   window.onload = function() {
+    var sendEvents = require('../camClient.js');
+    var clients = require('../clients.js');
+
     window.currentInstrument = clients.bass;
 
     var video = document.getElementById('video');

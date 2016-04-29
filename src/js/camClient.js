@@ -61,7 +61,7 @@
   function removedAlreadyMutedInstruments(data) {
     var newMutedInstruments = [];
     data.filter(function(event) {
-      if ( event.parameter === 'amp' && value === 0) {
+      if ( event.parameter === 'amp' && event.value === 0) {
         newMutedInstruments.push(event.instrument);
 
         if (mutedInstruments.indexOf(event.instrument) !== -1) {

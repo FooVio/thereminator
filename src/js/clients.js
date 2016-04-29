@@ -15,7 +15,7 @@
       }
     },
     bass: {
-      magenta: {
+      cyan: {
         instrument: 'bass',
         parameters: {
           x: 'amp',
