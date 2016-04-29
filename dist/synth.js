@@ -45,11 +45,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	(function() {
-	  window.onload = function() {
-	    var sendEvents = __webpack_require__(1);
-	    var clients = __webpack_require__(2);
+	  var sendEvents = __webpack_require__(1);
+	  var clients = __webpack_require__(2);
 	
-	    window.currentInstrument = clients.bass;
+	  window.onload = function() {
+	    window.currentInstrument = clients.synth;
 	
 	    var video = document.getElementById('video');
 	    var canvas = document.getElementById('canvas');
@@ -253,4 +253,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bass.js.map
+//# sourceMappingURL=synth.js.map
