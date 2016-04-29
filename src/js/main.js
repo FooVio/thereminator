@@ -15,6 +15,8 @@ function initSound() {
 
   instruments['synth'] = Mono('easyfx')
     .note.seq( Rndi(0,12), [1/4,1/8,1/2,1,2].rnd( 1/8,4 ) )
+
+  instruments['sampler'] = Sampler().load('media/choir.wav').note.seq( [0.7,0.8,0.9,1,1.1,1.2,1.3].rnd(), [1/4,1/8,1/2,1].rnd( 1/8,4 ) )
 }
 
 function mute() {
@@ -23,6 +25,7 @@ function mute() {
   drumamp('snare',0);
   amp('bass',0);
   amp('synth',0);
+  amp('sampler',6)
 }
 
 function setup() {
