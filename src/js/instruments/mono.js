@@ -1,10 +1,10 @@
 var volume = 0;
-var MAXVOLUME = 0.5;
+var MAXVOLUME = 1;
 
 // var PENTATONIC_SCALE = [183.54, 231.246, 275.0, 367.08, 462.494, 617.354, 734.162, 924.986, 1234.708, 1468.324, 1959.978, 2469.416, 2936.648, 3919.954, 4938.834, 6592.552, 7839.908, 9877.666000000001, 13185.101999999999, 15679.818];
 var PENTATONIC_SCALE = [183.54, 231.246, 275.0, 367.08, 462.494, 617.354, 734.162];
-var instruments = ['drums','bass','synth'];
-var parameters  = ['amp','kick','snare'];
+var instruments = ['drums/kick','drums/snare','bass','synth'];
+var parameters  = ['amp'];
 
 var currentInstument = instruments[0];
 var currentParameter = parameters[0];

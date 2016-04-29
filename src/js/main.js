@@ -38,10 +38,11 @@ function setup() {
     var instrument = message.instrument;
     switch (message.type) {
       case 'amp':
-        amp(instrument, message.value);
-        break;
-      case 'drums':
-        drumamp(instrument, message.value);
+        if (instrument.match(/drums\//)) {
+          drumamp(instrument.match(/drums\/(.+)/)[1], message.value);
+        } else {
+          amp(instrument, message.value);
+        }
         break;
       default:
         amp(instrument, message.value);
