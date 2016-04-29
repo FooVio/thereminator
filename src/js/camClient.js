@@ -24,23 +24,24 @@
     return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
   }
 
-  function signal(data) {
+  function signal(events) {
     var currentTime = new Date().getTime();
     var delta = currentTime - lastTime;
 
     if (delta > MAXDELTA) {
       lastTime = currentTime;
-      console.log('event sent:', 'client-message', data);
-      socket.emit('client-message', data);
+      console.log('event sent:', 'client-message', events);
+      var filteredEvents = removedAlreadyMutedInstruments(events);
+      socket.emit('client-message', filteredEvents);
     }
   }
 
-  function getValue(parameter, dimension, value) {
+  function getValueForParameter(parameter, range, value) {
     if (parameter === 'freq') {
-      var freqIndex = Math.round(map(value, dimension.min, dimension.max, MAX_FREQ, MIN_FREQ));
+      var freqIndex = Math.round(map(value, range.min, range.max, MAX_FREQ, MIN_FREQ));
       return PENTATONIC_SCALE[freqIndex];
     } else if (parameter === 'amp') {
-      return map(value, dimension.min, dimension.max, MAX_VOLUME, MIN_VOLUME)
+      return map(value, range.min, range.max, MAX_VOLUME, MIN_VOLUME)
     } else {
       return 0;
     }
@@ -53,39 +54,52 @@
       return {
         instrument: config.instrument,
         parameter: config.parameters[axis],
-        value: getValue(config.parameters[axis], dimensions[axis], card[axis])
+        value: getValueForParameter(config.parameters[axis], dimensions[axis], card[axis])
       };
     });
   }
 
-  function removedAlreadyMutedInstruments(data) {
+  function removedAlreadyMutedInstruments(events) {
     var newMutedInstruments = [];
-    data.filter(function(event) {
+    return events.filter(function(event) {
       if ( event.parameter === 'amp' && event.value === 0) {
         newMutedInstruments.push(event.instrument);
 
-        if (mutedInstruments.indexOf(event.instrument) !== -1) {
-          return false;
-        } else {
-          return true;
-        }
+        return (mutedInstruments.indexOf(event.instrument) < 0) ? true : false;
       } else {
         return true;
       }
-
     });
-    return data;
+  }
+
+  function getEventsForMissingCards(availableCards) {
+    var supportedColors = Object.keys(window.currentInstrument);
+    var availableColors = availableCards.map(function(card) {
+      return card.color;
+    });
+
+    var missingColors = supportedColors.filter(function(color) {
+      return availableColors.indexOf(i) < 0;
+    });
+
+    return missingColors.map(function(color) {
+      return {
+        instrument: window.currentInstrument[color],
+        parameter: 'amp',
+        value: MIN_VOLUME
+      };
+    });
   }
 
   function sendEvents(e) {
-    var data = e.data.reduce(function(memo, card) {
+    var eventsFromCam = e.data.reduce(function(memo, card) {
       return memo.concat(createEventsFromCard(card));
     }, []);
 
-    data = removedAlreadyMutedInstruments(data);
+    var totalEvents = getEventsForMissingCards().concat(eventsFromCam);
 
-    if(data.length !== 0) {
-      signal(data);
+    if(totalEvents.length !== 0) {
+      signal(totalEvents);
     }
   }
 
