@@ -18,10 +18,14 @@ video, canvas {
   height: 550px;
 }
 
-.instrumentsContainer {
+.instrumentsContainer, .paramsContainer {
   position: absolute;
   top: 50px;
   left: 630px;
+}
+
+.paramsContainer {
+  left: 750px;
 }
 
 li {
