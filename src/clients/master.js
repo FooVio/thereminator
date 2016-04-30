@@ -1,5 +1,5 @@
-var sound = require('../sound.js');
-var video = require('../video.js');
+var sound = require('../lib/sound.js');
+var video = require('../lib/video.js');
 
 function setup() {
   // SOUND

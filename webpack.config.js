@@ -1,13 +1,13 @@
 var path = require('path');
 
-var instrumentPath = 'src/js/instruments';
+var clientPath = 'src/clients';
 
 module.exports = {
   entry: {
-    bass: path.join(__dirname, instrumentPath, 'bass'),
-    drum: path.join(__dirname, instrumentPath, 'drum'),
-    synth: path.join(__dirname, instrumentPath, 'synth'),
-    server: path.join(__dirname, instrumentPath, 'server')
+    bass: path.join(__dirname, clientPath, 'bass'),
+    drum: path.join(__dirname, clientPath, 'drum'),
+    synth: path.join(__dirname, clientPath, 'synth'),
+    master: path.join(__dirname, clientPath, 'master')
   },
   output: {
     path: path.join(__dirname, 'dist'),

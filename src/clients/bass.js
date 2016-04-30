@@ -1,7 +1,7 @@
 (function() {
   window.onload = function() {
-    var sendEvents = require('../camClient.js');
-    var clients = require('../clients.js');
+    var sendEvents = require('../lib/camClient.js');
+    var clients = require('../config/clients.js');
 
     window.currentInstrument = clients.bass;
 
