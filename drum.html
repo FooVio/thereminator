@@ -4,22 +4,21 @@
     <meta charset="utf-8">
     <title>Thereminator - Drum</title>
 
-    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../src/styles.css">
 
     <script src="node_modules/tracking/build/tracking-min.js"></script>
-    <script src="node_modules/p5/lib/p5.min.js"></script>
-    <script src="node_modules/p5/lib/addons/p5.sound.js"></script>
-
     <script src="socket.io/socket.io.js"></script>
 
-    <script src="dist/drum.js"></script>
+    <script src="dist/bass.js"></script>
   </head>
   <body>
     <div class="frame">
-      <div class="container">
-        <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
-        <canvas id="canvas" width="600" height="450"></canvas>
+      <video id="video" width="600" height="450" preload autoplay loop></video>
+    </div>
+    <div class="instrument">
+      <div class="instrument-name">Drum</div>
+      <div class="instrument-signal">
+        <div id="bass" class="led led-red"></div>
       </div>
     </div>
   </body>
