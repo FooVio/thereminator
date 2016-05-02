@@ -47,7 +47,7 @@
 	(function() {
 	  window.onload = function() {
 	    var sendEvents = __webpack_require__(1);
-	    var clients = __webpack_require__(2);
+	    var clients = __webpack_require__(3);
 	
 	    window.currentInstrument = clients.bass;
 	
@@ -64,7 +64,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	(function() {
-	  var _ = __webpack_require__(3);
+	  var _ = __webpack_require__(2);
 	
 	  var MIN_VOLUME = 0;
 	  var MAX_VOLUME = 1;
@@ -114,7 +114,7 @@
 	      if(filteredEvents.length !== 0) {
 	        lastTime = currentTime;
 	
-	        console.log('event sent:', 'client-message', filteredEvents);
+	        console.log('event sent:', 'client-message', JSON.stringify(filteredEvents));
 	        socket.emit('client-message', filteredEvents);
 	        updateView(filteredEvents);
 	      }
@@ -196,76 +196,6 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
-
-	(function(){
-	  module.exports = {
-	    drum: {
-	      magenta: {
-	        instrument: 'drums/kick',
-	        parameters: {
-	          x: 'amp'
-	        }
-	      },
-	      cyan: {
-	        instrument: 'drums/snare',
-	        parameters: {
-	          x: 'amp'
-	        }
-	      }
-	    },
-	    bass: {
-	      cyan: {
-	        instrument: 'bass',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      magenta: {
-	        instrument: 'bass',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      yellow: {
-	        instrument: 'bass',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      }
-	    },
-	    synth: {
-	      cyan: {
-	        instrument: 'synth',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      magenta: {
-	        instrument: 'synth',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      yellow: {
-	        instrument: 'synth',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      }
-	    }
-	  };
-	}());
-
-
-/***/ },
-/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -1816,6 +1746,46 @@
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
 	}.call(this));
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	(function(){
+	  module.exports = {
+	    drum: {
+	      yellow: {
+	        instrument: 'drums/kick',
+	        parameters: {
+	          y: 'amp'
+	        }
+	      },
+	      cyan: {
+	        instrument: 'drums/snare',
+	        parameters: {
+	          y: 'amp'
+	        }
+	      }
+	    },
+	    bass: {
+	      cyan: {
+	        instrument: 'bass',
+	        parameters: {
+	          y: 'amp'
+	        }
+	      }
+	    },
+	    synth: {
+	      cyan: {
+	        instrument: 'synth',
+	        parameters: {
+	          y: 'amp'
+	        }
+	      }
+	    }
+	  };
+	}());
 
 
 /***/ }

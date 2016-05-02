@@ -49,7 +49,7 @@
       if(filteredEvents.length !== 0) {
         lastTime = currentTime;
 
-        console.log('event sent:', 'client-message', filteredEvents);
+        console.log('event sent:', 'client-message', JSON.stringify(filteredEvents));
         socket.emit('client-message', filteredEvents);
         updateView(filteredEvents);
       }
