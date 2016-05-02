@@ -1,32 +1,17 @@
-var osc;
-var freq = 500;
-var volume = 0;
-var MAXVOLUME = 0.5;
+(function() {
+  var sendEvents = require('../camClient.js');
+  var clients = require('../clients.js');
 
-var PENTATONIC_SCALE = [183.54, 231.246, 275.0, 367.08, 462.494, 617.354, 734.162];
+  window.onload = function() {
+    window.currentInstrument = clients.drum;
 
-var socket = io();
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
 
-var freqIndex = 0;
+    var tracker = new tracking.ColorTracker(Object.keys(tracking.ColorTracker.knownColors_));
+    tracking.track('#video', tracker, { camera: true });
 
-function setValues(e) {
-  if (e.data.length !== 0) {
-    freqIndex = Math.round(map(e.data[0].x,0,width, PENTATONIC_SCALE.length, 0));
-    freq = PENTATONIC_SCALE[freqIndex];
-
-    volume = map(e.data[0].y, 0, height, MAXVOLUME, 0);
-  } else {
-    volume = 0;
-  }
-
-  data = {
-    instrument: 'bass',
-    type: 'drum',
-    value: volume,
-    freq: PENTATONIC_SCALE[freqIndex]
+    tracker.on('track', sendEvents);
   };
-  console.log(data);
-  socket.emit('client-message', data);
-}
-
-window.pubSub.subscribe(setValues);
+}());

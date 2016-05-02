@@ -33,21 +33,23 @@ function setup() {
   mute();
 
   var socket = io();
-  socket.on('server-message', function(message){
-    console.log(message);
-    var instrument = message.instrument;
-    switch (message.type) {
-      case 'amp':
-        if (instrument.match(/drums\//)) {
-          drumamp(instrument.match(/drums\/(.+)/)[1], message.value);
-        } else {
+  socket.on('server-message', function(messages){
+    messages.forEach(function(message) {
+      console.log(JSON.stringify(message));
+      var instrument = message.instrument;
+      switch (message.parameter) {
+        case 'amp':
+          if (instrument.match(/drums\//)) {
+            drumamp(instrument.match(/drums\/(.+)/)[1], message.value);
+          } else {
+            amp(instrument, message.value);
+          }
+          break;
+        default:
           amp(instrument, message.value);
-        }
-        break;
-      default:
-        amp(instrument, message.value);
-        break;
-    }
+          break;
+      }
+    });
   });
 }
 

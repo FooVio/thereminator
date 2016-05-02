@@ -1,9 +1,9 @@
 (function() {
-  window.onload = function() {
-    var sendEvents = require('../camClient.js');
-    var clients = require('../clients.js');
+  var sendEvents = require('../camClient.js');
+  var clients = require('../clients.js');
 
-    window.currentInstrument = clients.bass;
+  window.onload = function() {
+    window.currentInstrument = clients.synth;
 
     var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
