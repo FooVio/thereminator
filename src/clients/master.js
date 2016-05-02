@@ -1,5 +1,5 @@
 var sound = require('../lib/sound.js');
-var video = require('../lib/video.js');
+// var video = require('../lib/video.js');
 
 function setup() {
   // SOUND
@@ -10,15 +10,17 @@ function setup() {
   socket.on('server-message', sound.process);
 
   // VIDEO
-  video.init();
+  // video.init();
 }
 
-function draw() {
-  video.draw();
-}
+// function draw() {
+//   video.draw();
+// }
 
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  background(0);
-}
+// function windowResized() {
+//   resizeCanvas(windowWidth, windowHeight);
+//   background(0);
+// }
+
+window.setup = setup;
