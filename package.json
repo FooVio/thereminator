@@ -16,6 +16,7 @@
     "p5": "^0.4.23",
     "socket.io": "^1.4.5",
     "tracking": "^1.1.2",
+    "underscore": "^1.8.3",
     "web-audio-api": "^0.2.2",
     "webpack": "^1.13.0"
   },

@@ -1,13 +1,9 @@
 (function() {
-  var sendEvents = require('../camClient.js');
-  var clients = require('../clients.js');
-
   window.onload = function() {
-    window.currentInstrument = clients.synth;
+    var sendEvents = require('../camClient.js');
+    var clients = require('../clients.js');
 
-    var video = document.getElementById('video');
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
+    window.currentInstrument = clients.synth;
 
     var tracker = new tracking.ColorTracker(Object.keys(tracking.ColorTracker.knownColors_));
     tracking.track('#video', tracker, { camera: true });

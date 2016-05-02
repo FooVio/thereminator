@@ -1,4 +1,6 @@
 (function() {
+  var _ = require('underscore');
+
   var MIN_VOLUME = 0;
   var MAX_VOLUME = 1;
 
@@ -24,6 +26,19 @@
     return ((n-start1)/(stop1-start1))*(stop2-start2)+start2;
   }
 
+  function updateView(events) {
+    events.forEach(function(event) {
+      var led = document.querySelector('#' + event.instrument);
+      if (led && event.parameter === 'amp') {
+        if (event.value > 0) {
+          led.classList.add('led-green');
+        } else {
+          led.classList.remove('led-green');
+        }
+      }
+    });
+  }
+
   function signal(events) {
     var currentTime = new Date().getTime();
     var delta = currentTime - lastTime;
@@ -36,6 +51,7 @@
 
         console.log('event sent:', 'client-message', JSON.stringify(filteredEvents));
         socket.emit('client-message', filteredEvents);
+        updateView(filteredEvents);
       }
     }
   }
@@ -45,7 +61,8 @@
       var freqIndex = Math.round(map(value, range.min, range.max, MAX_FREQ, MIN_FREQ));
       return PENTATONIC_SCALE[freqIndex];
     } else if (parameter === 'amp') {
-      return map(value, range.min, range.max, MAX_VOLUME, MIN_VOLUME)
+      var newValue = map(value, range.min, range.max, MAX_VOLUME, MIN_VOLUME);
+      return Math.max(0, newValue);
     } else {
       return 0;
     }
@@ -76,7 +93,7 @@
 
     mutedInstruments = newMutedInstruments;
 
-    return filteredEvents;
+    return _.uniq(filteredEvents, function(e) { return e.instrument + e.parameter + e.value; });
   }
 
   function getEventsForMissingCards(availableCards) {
