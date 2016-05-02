@@ -15,6 +15,8 @@ function initSound() {
 
   instruments['synth'] = Mono('easyfx')
     .note.seq( Rndi(0,12), [1/4,1/8,1/2,1,2].rnd( 1/8,4 ) )
+
+  follow = Follow( instruments['drums'] )
 }
 
 function mute() {
@@ -54,8 +56,7 @@ function setup() {
 }
 
 function draw() {
-  backgroundColor = color( random(0,255), random(0,255), random(0,255) );
-  background(backgroundColor);
+  background(follow.getValue()*255);
 }
 
 function amp(name, volume) {
