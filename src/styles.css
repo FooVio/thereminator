@@ -17,7 +17,7 @@ video, canvas {
   filter: FlipH;
 }
 
-.instrument {
+.instruments {
   position: absolute;
   right: 0;
   top: 0;
@@ -31,9 +31,9 @@ video, canvas {
 }
 
 .instrument-signal {
-  position: absolute;
+  position: fixed;
   right: 20px;
-  top: 20px;
+  margin-top: -32px;
 }
 
 .led {

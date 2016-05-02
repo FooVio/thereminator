@@ -93,7 +93,8 @@
 	
 	  function updateView(events) {
 	    events.forEach(function(event) {
-	      var led = document.querySelector('#' + event.instrument);
+	      var led = document.querySelector('#' + event.instrument.replace('/', '-'));
+	      console.log(event.instrument.replace('/', '-'));
 	      if (led && event.parameter === 'amp') {
 	        if (event.value > 0) {
 	          led.classList.add('led-green');
