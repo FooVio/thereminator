@@ -15,10 +15,10 @@
   // frameRate() is usually around 60 frames per second,
   // so 20 fps = 3 beats per second, meaning if the song is over 180 BPM,
   // we wont respond to every beat.
-  var beatHoldFrames = 30;
+  var beatHoldFrames = 2;
 
   // what amplitude level can trigger a beat?
-  var beatThreshold = 0.11;
+  var beatThreshold = 0.01;
 
   // When we have a beat, beatCutoff will be reset to 1.1*beatThreshold, and then decay
   // Level must be greater than beatThreshold and beatCutoff before the next beat can trigger.
@@ -28,11 +28,17 @@
 
 
   function init() {
+    backgroundColor = color( random(0,255), random(0,255), random(0,255) );
     c = createCanvas(windowWidth, windowHeight);
     noStroke();
     rectMode(CENTER);
 
+    var audioSignal = new p5.AudioIn()
+    audioSignal.connect();
+    audioSignal.start();
+
     amplitude = new p5.Amplitude();
+    amplitude.setInput(audioSignal);
 
     amplitude.smooth(0.9);
   }

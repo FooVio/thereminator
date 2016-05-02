@@ -22,3 +22,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   background(0);
 }
+
+window.setup = setup;
+window.draw = draw;
+window.windowResized = windowResized;

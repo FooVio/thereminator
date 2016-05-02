@@ -34,21 +34,24 @@
     instruments['drums'][drumname].amp = volume;
   }
 
-  function process(message) {
-    console.log(message);
-    var instrument = message.instrument;
-    switch (message.type) {
-      case 'amp':
-        if (instrument.match(/drums\//)) {
-          drumamp(instrument.match(/drums\/(.+)/)[1], message.value);
-        } else {
+  function process(messages) {
+    console.log(JSON.stringify(messages));
+    messages.forEach(function(message) {
+      console.log(JSON.stringify(message));
+      var instrument = message.instrument;
+      switch (message.parameter) {
+        case 'amp':
+          if (instrument.match(/drums\//)) {
+            drumamp(instrument.match(/drums\/(.+)/)[1], message.value);
+          } else {
+            amp(instrument, message.value);
+          }
+          break;
+        default:
           amp(instrument, message.value);
-        }
-        break;
-      default:
-        amp(instrument, message.value);
-        break;
-    }
+          break;
+      }
+    });
   }
 
   module.exports = {
