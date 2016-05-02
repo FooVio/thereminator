@@ -54,7 +54,7 @@ function setup() {
 }
 
 function draw() {
-  backgroundColor = color(mouseY,0,mouseX);
+  backgroundColor = color( random(0,255), random(0,255), random(0,255) );
   background(backgroundColor);
 }
 
