@@ -1,3 +1,13 @@
+body {
+  background-color: #222;
+}
+
+.frame {
+  width: 600px;
+  height: 450px;
+  margin: auto;
+}
+
 video, canvas {
   position: absolute;
   -moz-transform: scale(-1, 1);
@@ -7,28 +17,37 @@ video, canvas {
   filter: FlipH;
 }
 
-.container {
+.instruments {
   position: absolute;
-  z-index: 9999;
-  top: 50px;
+  right: 0;
+  top: 0;
+  width: 200px;
+  background-color: #222;
 }
 
-.frame {
-  width: 600px;
-  height: 550px;
+.instrument-name {
+  margin: 15px 0 15px 20px;
+  color: white;
 }
 
-.instrumentsContainer, .paramsContainer {
-  position: absolute;
-  top: 50px;
-  left: 630px;
+.instrument-signal {
+  position: fixed;
+  right: 20px;
+  margin-top: -32px;
 }
 
-.paramsContainer {
-  left: 750px;
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: #000 0 -1px 6px 1px;
 }
-
-li {
-  margin-left: -30px;
-  list-style-type: none;
+.led-red {
+  background-color: #F00;
+  box-shadow: #000 0 -1px 6px 1px, inset #600 0 -1px 8px, #F00 0 3px 11px;
+}
+.led-green {
+  background-color: #80FF00;
+  box-shadow: #000 0 -1px 6px 1px, inset #460 0 -1px 8px, #80FF00 0 3px 11px;
 }
