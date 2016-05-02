@@ -103,7 +103,7 @@
 	      if(filteredEvents.length !== 0) {
 	        lastTime = currentTime;
 	
-	        console.log('event sent:', 'client-message', filteredEvents);
+	        console.log('event sent:', 'client-message', JSON.stringify(filteredEvents));
 	        socket.emit('client-message', filteredEvents);
 	      }
 	    }
@@ -188,16 +188,16 @@
 	(function(){
 	  module.exports = {
 	    drum: {
-	      magenta: {
+	      yellow: {
 	        instrument: 'drums/kick',
 	        parameters: {
-	          x: 'amp'
+	          y: 'amp'
 	        }
 	      },
 	      cyan: {
 	        instrument: 'drums/snare',
 	        parameters: {
-	          x: 'amp'
+	          y: 'amp'
 	        }
 	      }
 	    },
@@ -205,22 +205,7 @@
 	      cyan: {
 	        instrument: 'bass',
 	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      magenta: {
-	        instrument: 'bass',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      yellow: {
-	        instrument: 'bass',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
+	          y: 'amp'
 	        }
 	      }
 	    },
@@ -228,22 +213,7 @@
 	      cyan: {
 	        instrument: 'synth',
 	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      magenta: {
-	        instrument: 'synth',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
-	        }
-	      },
-	      yellow: {
-	        instrument: 'synth',
-	        parameters: {
-	          x: 'amp',
-	          y: 'freq'
+	          y: 'amp'
 	        }
 	      }
 	    }
